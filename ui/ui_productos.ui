@@ -465,7 +465,7 @@ QToolTip {
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page_agregar">
              <widget class="QPushButton" name="boton_accion_agregar">
