@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui,QtCore
 import sys
+from load.load_ui_productos import Load_ui_productos
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -15,6 +16,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
         layout = QtWidgets.QVBoxLayout(self.centralwidget)
         layout.addWidget(logo)
+
+        #conectar items con acciones
+        self.actionProductos.triggered.connect(self.abrirProductos)
+
+    def abrirProductos(self):
+        window = Load_ui_productos()
+        window.show()
 
 '''if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
