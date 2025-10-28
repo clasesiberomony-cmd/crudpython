@@ -3,12 +3,14 @@ import sys
 from PyQt5 import QtWidgets, uic, QtCore  # si usas PyQt6: from PyQt6 import ...
 # from PyQt6 import QtWidgets, uic, QtCore
 from modelo.usuariodao import UsuarioDAO
+from utilerias.custommessagebox import TranslucentMessageBox
+from main_ventana_principal import MainWindow
 
 class LoginWindow(QtWidgets.QWidget):
     def __init__(self, ui_path="login_form.ui"):
         super().__init__()
         uic.loadUi(ui_path, self)
-
+        
         # Quitar bordes / título y permitir transparencia (necesario en runtime)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowSystemMenuHint)
         # Permite fondo transparente (en algunos sistemas puede requerir composición)
@@ -53,13 +55,17 @@ class LoginWindow(QtWidgets.QWidget):
             usuariodao.usuario.nickname = usuario
             usuariodao.usuario.password = password
             lista = usuariodao.buscarUsuario()
-            if len(lista) > 0:
-
-                QtWidgets.QMessageBox.information(self, "OK", "Intento de login enviado.")
+            if len(lista) > 0:                
+                self.principal = MainWindow()
+                self.principal.show()
+                self.close()
+                
             else:
-                QtWidgets.QMessageBox.warning(self, "Error", "Usuario o contraseña inválido.")
+                dlg = TranslucentMessageBox(self, "Error", "Usuario o contraseña inválido.")
+                dlg.exec_()
         else:
-            QtWidgets.QMessageBox.warning(self, "Error", "Completa usuario y contraseña.")
+            dlg = TranslucentMessageBox(self, "Error", "Completa Usuario o contraseña.")
+            dlg.exec_()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

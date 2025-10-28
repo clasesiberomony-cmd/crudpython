@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ======== ESTILO GLOBAL ======== */
+QMainWindow {
+    background-color: #f4f6fb;              /* Fondo claro neutro */
+    border: none;
+}
+
+/* ======== MENÚ PRINCIPAL ======== */
+QMenuBar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    spacing: 8px;
+    padding: 4px 10px;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+QMenuBar::item:selected {
+    background-color: #e6f0ff;
+    color: #1a73e8;
+}
+
+/* ======== MENÚ DESPLEGABLE ======== */
+QMenu {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+QMenu::item {
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #333333;
+}
+
+QMenu::item:selected {
+    background-color: #1a73e8;
+    color: #ffffff;
+}
+
+/* ======== BARRA DE ESTADO ======== */
+QStatusBar {
+    background-color: #ffffff;
+    border-top: 1px solid #d9d9d9;
+    color: #555555;
+    font-size: 12px;
+}
+
+/* ======== BOTONES ======== */
+QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #1a73e8, stop:1 #0061c7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #0f5ec7;
+}
+
+QPushButton:pressed {
+    background-color: #094a9a;
+}
+
+/* ======== CUADROS DE TEXTO Y CAMPOS ======== */
+QLineEdit, QComboBox, QTextEdit {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 13px;
+    color: #333333;
+}
+
+QLineEdit:focus, QComboBox:focus, QTextEdit:focus {
+    border: 1px solid #1a73e8;
+    box-shadow: 0px 0px 4px rgba(26, 115, 232, 0.3);
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCat_logos">
+    <property name="title">
+     <string>Catálogos</string>
+    </property>
+    <addaction name="actionClientes"/>
+    <addaction name="actionProductos"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <addaction name="menuCat_logos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionProductos">
+   <property name="text">
+    <string>Productos</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
