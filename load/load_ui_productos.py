@@ -60,9 +60,23 @@ class Load_ui_productos(QtWidgets.QMainWindow):
         self.precio_agregar.setText('')
 
     def actualizar_producto(self):
-        pass
+        #extraer los valores de la caja de texto
+        self.productodao.producto.clave = self.sku_actualizar.text()
+        self.productodao.producto.descripcion = self.descripcion_actualizar.text()
+        self.productodao.producto.existencia = int(self.existencia_actualizar.text())
+        self.productodao.producto.precio = float(self.precio_actualizar.text())
+        self.productodao.actualizarProducto()
+        self.mensaje.setText('¡¡El producto ha sido actualizado!!')
+        #Limpiar las cajas de texto
+        self.sku_actualizar.setText('')
+        self.descripcion_actualizar.setText('')
+        self.existencia_actualizar.setText('')
+        self.precio_actualizar.setText('')
+
     def eliminar_producto(self):
-        pass
+        #extraer los valores de la caja de texto
+        self.productodao.eliminarProducto()
+
     def limpiar_formulario(self):
         #Limpiar las cajas de texto
         self.sku_buscar.setText('')
@@ -83,9 +97,30 @@ class Load_ui_productos(QtWidgets.QMainWindow):
             fila += 1
 
     def buscar_actualizar(self):
-        pass
+        self.productodao.producto.clave = self.sku_actualizar.text()
+        datos = self.productodao.buscarProducto()
+        if len(datos) == 0:
+            self.mensaje.setText('¡¡ SKU no existe!!')
+        else:
+            self.mensaje.setText('¡¡ Producto encontrado!!')
+            self.descripcion_actualizar.setText(datos[0][2])
+            self.existencia_actualizar.setText(str(datos[0][3]))
+            self.precio_actualizar.setText(str(datos[0][4]))
+            self.productodao.producto.id_producto = datos[0][1]
+
+
     def buscar_eliminar(self):
-        pass
+        self.productodao.producto.clave = self.sku_eliminar.text()
+        datos = self.productodao.buscarProducto()
+        if len(datos) == 0:
+            self.mensaje.setText('¡¡ SKU no existe!!')
+        else:
+            self.mensaje.setText('¡¡ Producto encontrado!!')
+            self.descripcion_eliminar.setText(datos[0][2])
+            self.existencia_eliminar.setText(str(datos[0][3]))
+            self.precio_eliminar.setText(str(datos[0][4]))
+            self.productodao.producto.id_producto = datos[0][1]
+
     def buscar_buscar(self):
         self.productodao.producto.clave = self.sku_buscar.text()
         datos = self.productodao.buscarProducto()

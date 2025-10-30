@@ -44,8 +44,8 @@ class ProductoDAO():
     def actualizarProducto(self):
         self.bd.establecerConexionBD()
         #hacemos uso de la conexion
-        sp = "exec [dbo].[sp_actualizar_producto] @clave=?,@descripcion=?,@existencia=?,@precio=?,"
-        param = (self.producto.clave,self.producto.descripcion,self.producto.existencia,self.producto.precio)
+        sp = "exec [dbo].[sp_actualizar_producto] @id_producto=?,@clave=?,@descripcion=?,@existencia=?,@precio=?"
+        param = (self.producto.id_producto,self.producto.clave,self.producto.descripcion,self.producto.existencia,self.producto.precio)
         cursor = self.bd.conexion.cursor()
         cursor.execute(sp,param)
         cursor.commit()
