@@ -76,6 +76,12 @@ class Load_ui_productos(QtWidgets.QMainWindow):
     def eliminar_producto(self):
         #extraer los valores de la caja de texto
         self.productodao.eliminarProducto()
+        self.mensaje.setText('¡¡El producto ha sido eliminado!!')
+        #Limpiar las cajas de texto
+        self.sku_eliminar.setText('')
+        self.descripcion_eliminar.setText('')
+        self.existencia_eliminar.setText('')
+        self.precio_eliminar.setText('')
 
     def limpiar_formulario(self):
         #Limpiar las cajas de texto
@@ -106,8 +112,8 @@ class Load_ui_productos(QtWidgets.QMainWindow):
             self.descripcion_actualizar.setText(datos[0][2])
             self.existencia_actualizar.setText(str(datos[0][3]))
             self.precio_actualizar.setText(str(datos[0][4]))
-            self.productodao.producto.id_producto = datos[0][1]
-
+            self.productodao.producto.id_producto = datos[0][0]
+ 
 
     def buscar_eliminar(self):
         self.productodao.producto.clave = self.sku_eliminar.text()
@@ -119,7 +125,7 @@ class Load_ui_productos(QtWidgets.QMainWindow):
             self.descripcion_eliminar.setText(datos[0][2])
             self.existencia_eliminar.setText(str(datos[0][3]))
             self.precio_eliminar.setText(str(datos[0][4]))
-            self.productodao.producto.id_producto = datos[0][1]
+            self.productodao.producto.id_producto = datos[0][0]
 
     def buscar_buscar(self):
         self.productodao.producto.clave = self.sku_buscar.text()
